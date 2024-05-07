@@ -12,9 +12,9 @@ const Cart = () => {
 
   const [isCheckoutDisabled, setIsCheckoutDisabled] = useState(false); // State for disabling checkout button
 
-  const handleQuantityChange = (change, id) => {
+  const handleQuantityChange = (change, id, color, size) => {
     if (change) {
-      addToCart({ productId: id, quantity: 1 })
+      addToCart({ productId: id, quantity: 1, color, size })
       forceUpdate()
     } else {
       removeFromCart(id)
@@ -55,6 +55,12 @@ const Cart = () => {
                       {selectedProduct(el.productId).name}
                     </h2>
                     <p>ID: {selectedProduct(el.productId).id}</p>
+                    <p className="text-lg text-gray-300 mb-2">
+                      Color: {el.color}
+                    </p>
+                    <p className="text-lg text-gray-300 mb-6">
+                      Size: {el.size}
+                    </p>
                     <p className="text-lg text-gray-300 mb-6">
                       ${selectedProduct(el.productId).price} USD
                     </p>
@@ -62,13 +68,13 @@ const Cart = () => {
                       {selectedProduct(el.productId).description}
                     </p>
                     <div className="flex items-center mb-6">
-                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-l disabled:bg-gray-500 disabled:cursor-not-allowed" onClick={() => handleQuantityChange(false, el.productId)} disabled={el.quantity === 1}>
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-l disabled:bg-gray-500 disabled:cursor-not-allowed" onClick={() => handleQuantityChange(false, el.productId, el.color, el.size)} disabled={el.quantity === 1}>
                         -
                       </button>
                       <span className="text-white font-bold mx-4">
                         {el.quantity}
                       </span>
-                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r" onClick={() => handleQuantityChange(1, el.productId)}>
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r" onClick={() => handleQuantityChange(true, el.productId, el.color, el.size)}>
                         +
                       </button>
                     </div>

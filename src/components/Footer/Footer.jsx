@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import logo from "../../assets/logo.svg"
 const Footer = () => {
   return (
@@ -20,9 +21,11 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-bold mb-4">Links</h3>
             <ul className="text-gray-400">
-              <li className="mb-2 hover:text-gray-300 transition-colors duration-300">
+             <Link to="/">
+             <li className="mb-2 hover:text-gray-300 transition-colors duration-300">
                 <a href="#">Home</a>
               </li>
+             </Link>
               <li className="mb-2 hover:text-gray-300 transition-colors duration-300">
                 <a href="#">About</a>
               </li>
@@ -58,7 +61,7 @@ const Footer = () => {
                 <FaTwitter size={20} />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/codewithamittiwari"
                 className="text-gray-400 hover:text-gray-300 transition-colors duration-300"
               >
                 <FaInstagram size={20} />

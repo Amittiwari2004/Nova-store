@@ -1,4 +1,3 @@
-// ShopContextProvider.jsx
 import React, { createContext } from "react";
 import all_products from "../data/all_product";
 
@@ -12,7 +11,7 @@ const ShopContextProvider = (props) => {
       let isExists = false;
       console.log("----->", contextValue.cart);
       contextValue.cart = contextValue?.cart?.map((el) => {
-        if (el.productId === item.productId) {
+        if (el.productId === item.productId && el.color === item.color && el.size === item.size) {
           console.log("oooooo", el.quantity);
           el.quantity = el.quantity + item.quantity;
           isExists = true;
